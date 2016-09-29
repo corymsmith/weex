@@ -1,0 +1,65 @@
+<template>
+  <wxc-panel>
+    <text style="font-size:40px;">{{date}}</text>
+    <div style="flex-direction:row;">
+      <wxc-button type="default" size="small" value="选择日期" onclick="pickdate" style="margin-top:10px;width: 200px;border-color: #26a4f4;font-color: #26a4f4;border-width: 2px" id="button"></wxc-button>
+      <wxc-button type="default" size="small" value="选择时间" onclick="picktime" style="margin-top:10px;margin-left:20px;width: 200px;border-color: #26a4f4;font-color: #26a4f4;border-width: 2px"></wxc-button>
+    </div>
+  </wxc-panel>
+</template>
+
+<style>
+
+</style>
+
+<script>
+  require('weex-components');
+  module.exports = {
+    data: {
+      date: '',
+    },
+    methods: {
+      ready: function () {
+        var myDate = new Date();
+        var month = myDate.getMonth()+1
+        this.date = myDate.getFullYear() + '年' + month +'月'+myDate.getDate() +'日' + myDate.getHours() +'时' + myDate.getMinutes() +'分';
+      },
+      pickdate: function() {
+        var self = this;
+        var pickerDate = {}
+        pickerDate['hour'] = 12;
+        pickerDate['minute'] = 12;
+        pickerDate['is24Hour'] = true;
+        pickerDate['date'] = 12;
+        pickerDate['minute'] = 12;
+        pickerDate['date'] = new Date();
+        pickerDate['minDate'] = new Date(1970, 11, 31);
+        pickerDate['maxDate'] = new Date(2099, 11, 31);
+
+
+        var picker = require('@weex-module/datePicker');
+        picker.pick('date',pickerDate,function(result){
+          console.log('%d',result['year']);
+          self.date = result['year'] + '年' + result['month'] +'月'+result['date'] +'日' + result['hour'] +'时' + result['minute'] +'分';
+        });
+      },
+      picktime: function() {
+        var self = this;
+        var pickerDate = {}
+        pickerDate['hour'] = 12;
+        pickerDate['minute'] = 12;
+        pickerDate['date'] = 12;
+        pickerDate['minute'] = 12;
+        pickerDate['date'] = new Date();
+        pickerDate['minDate'] = new Date(1970, 11, 31);
+        pickerDate['maxDate'] = new Date(2099, 11, 31);
+
+        var picker = require('@weex-module/datePicker');
+        picker.pick('time',pickerDate,function(result){
+          console.log('%d',result['year']);
+          self.date = result['year'] + '年' + result['month'] +'月'+result['date'] +'日' + result['hour'] +'时' + result['hour'] +'分';
+        });
+      }
+    }
+  };
+</script>
