@@ -1,12 +1,12 @@
 <template>
   <scroller>
     <wxc-panel title="日期" type="primary">
-      <wxc-hn level="1" value="{{year}}年{{month}}月{{date}}日"></wxc-hn>
+      <wxc-hn level="2" value="{{year}}年{{month}}月{{date}}日"></wxc-hn>
       <wxc-button type="primary" onclick="{{pickdate}}" value="选择日期"></wxc-button>
     </wxc-panel>
 
     <wxc-panel title="时间" type="primary">
-      <wxc-hn level="1" value="{{hour}}时{{minute}}分"></wxc-hn>
+      <wxc-hn level="2" value="{{hour}}时{{minute}}分"></wxc-hn>
       <wxc-button type="primary" onclick="{{picktime}}" value="选择时间"></wxc-button>
 
     </wxc-panel>
