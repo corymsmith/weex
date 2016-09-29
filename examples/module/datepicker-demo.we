@@ -1,12 +1,18 @@
 <template>
-  <wxc-panel>
-    <text style="font-size:40px;">{{date}}</text>
-    <div style="flex-direction:row;">
-      <wxc-button type="default" size="small" value="选择日期" onclick="pickdate" style="margin-top:10px;width: 200px;border-color: #26a4f4;font-color: #26a4f4;border-width: 2px" id="button"></wxc-button>
-      <wxc-button type="default" size="small" value="选择时间" onclick="picktime" style="margin-top:10px;margin-left:20px;width: 200px;border-color: #26a4f4;font-color: #26a4f4;border-width: 2px"></wxc-button>
-    </div>
-  </wxc-panel>
+  <scroller>
+    <wxc-panel title="日期" type="primary">
+      <wxc-hn level="1" value="{{year}}年{{month}}月{{date}}日"></wxc-hn>
+      <wxc-button type="primary" onclick="{{pickdate}}" value="选择日期"></wxc-button>
+    </wxc-panel>
+
+    <wxc-panel title="时间" type="primary">
+      <wxc-hn level="1" value="{{hour}}时{{minute}}分"></wxc-hn>
+      <wxc-button type="primary" onclick="{{picktime}}" value="选择时间"></wxc-button>
+
+    </wxc-panel>
+  </scroller>
 </template>
+
 
 <style>
 
@@ -16,46 +22,45 @@
   require('weex-components');
   module.exports = {
     data: {
-      date: '',
+      year: '',
+      month:'',
+      date:'',
+      hour:'',
+      minute:'',
     },
     methods: {
       ready: function () {
         var myDate = new Date();
-        var month = myDate.getMonth()+1
-        this.date = myDate.getFullYear() + '年' + month +'月'+myDate.getDate() +'日' + myDate.getHours() +'时' + myDate.getMinutes() +'分';
+        var month = myDate.getMonth()
+        this.year = myDate.getFullYear()
+        this.month = month+1
+        this.date = myDate.getDate()
+        this.hour = myDate.getHours()
+        this.minute = myDate.getMinutes()
       },
       pickdate: function() {
         var self = this;
         var pickerDate = {}
-        pickerDate['hour'] = 12;
-        pickerDate['minute'] = 12;
-        pickerDate['is24Hour'] = true;
-        pickerDate['date'] = 12;
-        pickerDate['minute'] = 12;
+//        pickerDate['date'] = new Date(2016, 8, 20);
         pickerDate['date'] = new Date();
         pickerDate['minDate'] = new Date(1970, 11, 31);
         pickerDate['maxDate'] = new Date(2099, 11, 31);
-
-
         var picker = require('@weex-module/datePicker');
         picker.pick('date',pickerDate,function(result){
-          self.date = result['year'] + '年' + result['month'] +'月'+result['date'] +'日' + result['hour'] +'时' + result['minute'] +'分';
+          self.year = result['year']
+          self.month = result['month']+1
+          self.date = result['date']
         });
       },
       picktime: function() {
         var self = this;
         var pickerDate = {}
-        pickerDate['hour'] = 12;
-        pickerDate['minute'] = 12;
-        pickerDate['date'] = 12;
-        pickerDate['minute'] = 12;
-        pickerDate['date'] = new Date();
-        pickerDate['minDate'] = new Date(1970, 11, 31);
-        pickerDate['maxDate'] = new Date(2099, 11, 31);
-
+        pickerDate['hour'] = this.hour;
+        pickerDate['minute'] = this.minute;
         var picker = require('@weex-module/datePicker');
         picker.pick('time',pickerDate,function(result){
-          self.date = result['year'] + '年' + result['month'] +'月'+result['date'] +'日' + result['hour'] +'时' + result['hour'] +'分';
+          self.hour = result['hour']
+          self.minute = result['minute']
         });
       }
     }

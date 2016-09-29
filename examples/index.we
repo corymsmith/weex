@@ -20,7 +20,6 @@
         {name: 'animation', title: 'Animation'},
 
         // component
-        {name: 'component/datepicker-demo', title: 'datepikcer'},
         {name: 'component/text-demo', title: 'Text'},
         {name: 'component/image-demo', title: 'Image'},
         {name: 'component/input-demo', title: 'Input'},
@@ -43,6 +42,7 @@
         {name: 'module/modal', title: 'Modal'},
         {name: 'module/stream-demo', title: 'Stream'},
         {name: 'module/storage-demo',title:'Storage'},
+        {name: 'module/datepicker-demo1',title:'Date Picker'},
         // {name: 'module/clipboard', title: 'Clipboard'}, // 0.8 , developing
 
         // showcase
