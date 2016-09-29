@@ -39,7 +39,6 @@
 
         var picker = require('@weex-module/datePicker');
         picker.pick('date',pickerDate,function(result){
-          console.log('%d',result['year']);
           self.date = result['year'] + '年' + result['month'] +'月'+result['date'] +'日' + result['hour'] +'时' + result['minute'] +'分';
         });
       },
@@ -56,7 +55,6 @@
 
         var picker = require('@weex-module/datePicker');
         picker.pick('time',pickerDate,function(result){
-          console.log('%d',result['year']);
           self.date = result['year'] + '年' + result['month'] +'月'+result['date'] +'日' + result['hour'] +'时' + result['hour'] +'分';
         });
       }
