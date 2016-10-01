@@ -4,11 +4,11 @@
 
 ### Intro
 
-Weex is a extendable cross-platform solution for dynamic programming and publishing projects. You can build your own components on web platform or native platform by extending the components system. Also you can extend weex by adding new methods for one module, new moudles or new bundle loaders. Follow the steps bellow you can dive into the journy of creating multiple builtin components, APIs and loaders.
+Weex is an extendable cross-platform solution for dynamic programming and publishing projects. You can build your own components on web platform or native platform by extending the components system. Also you can extend weex by adding new methods for one module, new modules or new bundle loaders. Follow the steps below and you can dive into the journey of creating multiple builtin components, APIs and loaders.
 
 First of all, components, APIs and loaders are extensions to weex, so you can create your extensions without requiring the weex package, that means your extensions can be totally standalone. 
 
-Second, you should always implement a extension for all the three platforms (android, ios and web), except that you only use it on one specific platform. After all weex is a cross platform framework and the equality of user expierence in all platforms is very important. Although you can create components separately on one platform by another, or welcome other developers on other platforms to join your work (You can always find coders who want the same feature with you in the commity). Here are docs about how to create native extensions on [ios](./extend-to-ios.md) and [android](./extend-to-android.md). 
+Second, you should always implement a extension for all 3 platforms (android, ios and web), except that you only use it on one specific platform. After all weex is a cross platform framework and the equality of user experience in all platforms is very important. Although you can create components separately on one platform by another, or welcome other developers on other platforms to join your work (You can always find coders who want the same feature with you in the community). Here are some docs about how to create native extensions on [ios](./extend-to-ios.md) and [android](./extend-to-android.md). 
 
 You should publish your extensions somewhere weex developers can easily find, somewhere popular, independent and easy to search and use, such as, npm. Npm is what we strongly recommended.
 
@@ -200,7 +200,7 @@ Use the user helper API in your dsl code (xxx.we):
 
 ### Add a new loader
 
-**Loader is only a type of extension for weex-html5 (web platform), native platform is not needing this.**
+**Loader is only a type of extension for weex-html5 (web platform), native platform do not require this.**
 
 Weex's builtin loaders to load a weex bundle are `xhr`, `jsonp` and `source`. The default loader is `xhr`. You can register your own loader by using `weex.registerLoader`. For example, you got a service method named `myServe.getWeexBundle`, which can load a weex bundle file through some magical tunnel:
 
